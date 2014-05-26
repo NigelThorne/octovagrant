@@ -21,15 +21,18 @@ There are two ways to proceed from here:
     git push octo master
     lynx http://harp-test.octodev.io
     
-### Use the already built Vagrant box.(from windows using putty, and git)
+### Use the already built Vagrant box from windows (using putty, and git)
 
     vagrant up # The box will be downloaded, verified and installed.
     vagrant ssh -c "curl https://github.com/{your-username}.keys >> /home/vagrant/.ssh/authorized_keys"
-    putty serve.octodev.io:22 # accept the server key and close putty
-    cat c:/Users/you/.ssh/{your-key.pub} | plink vagrant@server.octodev.io "sudo gitreceive upload-key {your-name}"
+    plink vagrant@server.octodev.io # accept the server key and then Ctrl+C
+    cat c:/Users/{you}/.ssh/{your-key.pub} | plink vagrant@server.octodev.io "sudo gitreceive upload-key {your-name}"
+    set GIT_SSH=c:\Program Files (x86)\PuTTY\plink.exe
+    #
+    # This point onward is just testing everything is working....
+    #
     git clone https://github.com/octohost/harp.git && cd harp
     git remote add octo git@server.octodev.io:harp-test.git
-    set GIT_SSH=c:\Program Files (x86)\PuTTY\plink.exe
     # you may find your putty is in a different folder
     git push octo master
     # open a browser to http://harp-test.octodev.io
