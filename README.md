@@ -26,7 +26,7 @@ There are two ways to proceed from here:
 ### Use the already built Vagrant box from windows (using putty, and git)
 
     vagrant up # The box will be downloaded, verified and installed.
-    vagrant ssh -c "curl https://github.com/{your-username}.keys >> /home/vagrant/.ssh/authorized_keys"
+    vagrant ssh -c "curl -L https://github.com/{your-username}.keys >> /home/vagrant/.ssh/authorized_keys"
     plink vagrant@server.octodev.io # accept the server key and then Ctrl+C
     cat c:/Users/{you}/.ssh/{your-key.pub} | plink vagrant@server.octodev.io "sudo gitreceive upload-key {your-name}"
     set GIT_SSH=c:\Program Files (x86)\PuTTY\plink.exe
